@@ -17,11 +17,31 @@ class Program
 {
     static async Task Main()
     {
-        using HttpClient client = new HttpClient();
+        //using HttpClient client = new HttpClient();
 
-        string response = await client.GetStringAsync(
-            "https://jsonplaceholder.typicode.com/posts/1");
+        //string response = await client.GetStringAsync(
+        //    "https://jsonplaceholder.typicode.com/posts/1");
 
-        Console.WriteLine(response);
+
+
+        //Console.WriteLine(response);
+        //Example of multiple awaits in a single method
+
+        //I called the method ProcessAsync in routine way, which didn't work
+        //So addded await keyword to make it working
+        await ProcessAsync();
+    }
+    //Multiple awaits in the same method
+    //One Async can have multiple await statements in the same method. Each await statement will pause the execution of the method until the awaited task completes,
+    //allowing other tasks to run in the meantime.
+    static async Task ProcessAsync()
+    {
+        Console.WriteLine("Step 1");
+        await Task.Delay(1000);
+
+        Console.WriteLine("Step 2");
+        await Task.Delay(1000);
+
+        Console.WriteLine("Step 3");
     }
 }
