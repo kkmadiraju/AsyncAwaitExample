@@ -30,6 +30,8 @@ class Program
         //I called the method ProcessAsync in routine way, which didn't work
         //So addded await keyword to make it working
         await ProcessAsync();
+
+        await RunTasksInParalell();
     }
     //Multiple awaits in the same method
     //One Async can have multiple await statements in the same method. Each await statement will pause the execution of the method until the awaited task completes,
@@ -44,4 +46,14 @@ class Program
 
         Console.WriteLine("Step 3");
     }
-}
+    static async Task RunTasksInParalell()
+    {
+        Task task1 = Task.Delay(2000);
+        Task task2 = Task.Delay(3000);
+
+        await Task.WhenAll(task1, task2);
+
+        Console.WriteLine("Both tasks completed.");
+    }
+
+    }

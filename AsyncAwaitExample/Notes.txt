@@ -1,0 +1,18 @@
+﻿Common interview question: Why use async/await?
+
+Without async/await:
+
+Long-running operations can block the current thread.
+Applications may become unresponsive while waiting.
+
+With async/await:
+
+The thread is free to do other work while the operation is in progress.
+UI applications stay responsive.
+Server applications can handle more concurrent requests efficiently.
+Interview tips
+async marks a method that can use await.
+await can only be used inside an async method.
+async methods typically return Task, Task<T>, or (for event handlers) void.
+Prefer Task or Task<T> over async void except for event handlers.
+await Task.WhenAll(...) is useful for waiting on multiple independent asynchronous operations in parallel.
